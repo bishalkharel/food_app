@@ -11,11 +11,11 @@ class CustomMMCF(forms.ModelMultipleChoiceField): # multiple choice option ko la
 class CreateMealForm(forms.ModelForm):
         class Meta:
             model = Person
-            fields = ['name', 'birthday']    
+            fields = ['name', 'birthday','choose_categories']    
 
     name = forms.CharField()
     date = forms.DateInput()    
     choose_categories = CustomMMCF(
-        queryset=Member.objects.all(),
+        queryset=Category.objects.all(),
         widget=forms.CheckboxSelectMultiple
     )

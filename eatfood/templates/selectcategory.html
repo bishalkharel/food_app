@@ -1,0 +1,13 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Please Select Category{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+  Hi {{ user.username }}!
+{% else %}
+  <p>Please login to select category</p>
+  <a href="{% url 'login' %}">Log In</a>
+{% endif %}
+{% endblock %}
