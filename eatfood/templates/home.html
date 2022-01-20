@@ -8,6 +8,9 @@
 {% block content %}
 {% if user.is_authenticated %}
   Hi {{ user.username }}!
+  <br>
+  <br>
+  <b><a href="selectcategory">Click here to select the food category</a></b>
 {% else %}
   <p>You are not logged in</p>
   <a href="{% url 'login' %}">Log In</a>

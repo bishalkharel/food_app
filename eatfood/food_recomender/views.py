@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .forms import CreatePersonForm
+from .models import Person,Category,FoodProduct
 
 
 
@@ -12,4 +13,14 @@ def assign_category(request):
             categ_form.save()
     form=CreatePersonForm()
     return render(request, "selectcategory.html", {"form": form})
+
+
+def show_relatives_items(request):
+    if request.user.is_authenticated:
+        items=Person.objects.filter(id=request.user.id)
+        items_available={
+            "items":items
+        }
+        return render(request,'show_items.html',items_available)
+    return redirect('')
 
