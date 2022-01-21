@@ -18,6 +18,7 @@ def assign_category(request):
 def show_relatives_items(request):
     if request.user.is_authenticated:
         items=Person.objects.filter(id=request.user.id)
+        print((items.values_list))
         items_available={
             "items":items
         }
