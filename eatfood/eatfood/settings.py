@@ -22,6 +22,7 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -103,6 +104,7 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
+AUTH_USER_MODEL = 'food_recomender.Person'
 
 
 # Static files (CSS, JavaScript, Images)

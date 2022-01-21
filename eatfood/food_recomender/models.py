@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
 class Category(models.Model):
     name=models.CharField(max_length=200)
@@ -14,7 +15,7 @@ class FoodProduct(models.Model):
         return self.food_name
 
 
-class Person(models.Model):
+class Person(AbstractUser):
     name=models.CharField(max_length=20)
     categories=models.ManyToManyField(Category)
     

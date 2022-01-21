@@ -8,7 +8,7 @@ def assign_category(request):
     if request.method == "POST":
         form = CreatePersonForm(request.POST)
         if form.is_valid():
-            categ_form = form.save(commit=False)
+            categ_form = form.update(commit=False)
             categ_form.user = request.user
             categ_form.save()
     form=CreatePersonForm()
@@ -17,7 +17,7 @@ def assign_category(request):
 
 def show_relatives_items(request):
     if request.user.is_authenticated:
-        items=Person.objects.filter(id=request.user.id)
+        items=Person.objects.get(id=request.user.id)
         print((items.values_list))
         items_available={
             "items":items
