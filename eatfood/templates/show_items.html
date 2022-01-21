@@ -2,14 +2,13 @@
 
 {% block title %}You might like these items{% endblock %}
 
+
+
 {% block content %} 
-
-{% for i in items %}
-  <ul>
-      <li>{{i}}</li>
-  </ul>
-
-{% endfor %}
-
-
+<b>You might like these foods</b>
+{% for i in foods   %}
+ <ul>
+   <li>{{i.food_name}}</li>
+ </ul>
+{% endfor  %}
 {% endblock %}

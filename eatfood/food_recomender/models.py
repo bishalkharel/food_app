@@ -9,7 +9,7 @@ class Category(models.Model):
 
 class FoodProduct(models.Model):
     food_name=models.CharField(max_length=100)
-    category=models.ForeignKey(Category,on_delete=models.CASCADE,blank=True, null=True)
+    category=models.ForeignKey(Category,on_delete=models.CASCADE,blank=True, null=True,related_name="food")
 
     def __str__(self):
         return self.food_name
