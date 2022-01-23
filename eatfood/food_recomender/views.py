@@ -16,7 +16,6 @@ def assign_category(request):
     form=CreatePersonForm()
     return render(request, "selectcategory.html", {"form": form})
 
-
 def show_relatives_items(request):
     if request.user.is_authenticated:
         print(request.post)
@@ -26,4 +25,5 @@ def show_relatives_items(request):
         }
         return render(request,'show_items.html',items_available)
     return redirect('')
+    
 

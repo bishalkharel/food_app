@@ -4,9 +4,16 @@
 {% block content %} 
 <h1>You might like these foods</h1>
 {% for i in foods   %}
- <ul>
-   <li>{{i.food_name}}</li>
- </ul>
+ <ol>
+   <li>
+     <ul>
+       <li><b>{{i.food_name}}</b></li>
+       <p>{{i.price}}$</p>
+       <p>Description:     {{i.description}}</p>
+       <p>Recepie:         {{i.recepie}}</p>
+     </ul>
+   </li>
+ </ol>
 {% endfor  %}
 
 

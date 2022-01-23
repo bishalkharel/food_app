@@ -13,8 +13,7 @@ class CreatePersonForm(forms.ModelForm):
             model = Person
             fields = ['categories']    
 
-     #name = forms.CharField()
-     #birthday = forms.DateInput()    
+         
      categories = CustomMMCF(
         queryset=Category.objects.all(),
         widget=forms.CheckboxSelectMultiple
