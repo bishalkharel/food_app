@@ -1,8 +1,9 @@
 
+from xml.etree.ElementInclude import include
 from django.shortcuts import render,redirect
 from .forms import CreatePersonForm
 from .models import Person,Category,FoodProduct
-
+from django.urls import path,include
 
 def assign_category(request):
     if request.method == "POST":
@@ -12,7 +13,7 @@ def assign_category(request):
             foods = []
             for category in form.cleaned_data.get("categories"):
                 foods.extend(category.food.all())
-            return render(request,'show_items.html',{"foods":foods})
+            return render(request,'website-menu-06/index.html',{"foods":foods})
     form=CreatePersonForm()
     return render(request, "selectcategory.html", {"form": form})
 
@@ -23,7 +24,7 @@ def show_relatives_items(request):
         items_available={
             "items":items
         }
-        return render(request,'show_items.html',items_available)
+        return render(request,'website-menu-06/index.html',items_available)
     return redirect('')
     
 
