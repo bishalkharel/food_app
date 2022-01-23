@@ -3,8 +3,8 @@
 
 {% block content %} 
 <h1>You might like these foods</h1>
+<ol>
 {% for i in foods   %}
- <ol>
    <li>
      <ul>
        <li><b>{{i.food_name}}</b></li>
@@ -13,11 +13,8 @@
        <p>Recepie:         {{i.recepie}}</p>
      </ul>
    </li>
- </ol>
 {% endfor  %}
-
-
-
+</ol>
 {% endblock %}
 
 
