@@ -1,14 +1,16 @@
 {% extends 'base.html' %}
 
-{% block title %}You might like these items{% endblock %}
-
-
 
 {% block content %} 
-<b>You might like these foods</b>
+<h1>You might like these foods</h1>
 {% for i in foods   %}
  <ul>
    <li>{{i.food_name}}</li>
  </ul>
 {% endfor  %}
+
+
+
 {% endblock %}
+
+

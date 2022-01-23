@@ -9,6 +9,9 @@ class Category(models.Model):
 
 class FoodProduct(models.Model):
     food_name=models.CharField(max_length=100)
+    recepie=models.TextField(max_length=300)
+    description=models.CharField(max_length=200)
+    price=models.IntegerField()
     category=models.ForeignKey(Category,on_delete=models.CASCADE,blank=True, null=True,related_name="food")
 
     def __str__(self):
