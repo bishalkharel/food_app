@@ -8,6 +8,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
+MEDIA_ROOT= BASE_DIR /"templates/images"
+MEDIA_URL="/media/"
+STATICFILES_DIRS=[BASE_DIR/"templates"]
+STATIC_URL="/static/"
+STATIC_ROOT=BASE_DIR  / "assets"
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/

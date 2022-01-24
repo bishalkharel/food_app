@@ -1,4 +1,4 @@
-
+{%  load static    %}
 <!doctype html>
 <html lang="en">
   <head>
@@ -11,42 +11,54 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <style type="text/css">
-      body {
-    background-image: url('use_background.jpg');
+
+body {
+    background-image: url({% static 'use_background.jpg'  %});
     font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    background-color: #fff;
-    height: 200vh;
     position: relative;
             }
 
-  p {
-    color: rgba(10, 10, 10, 0.808);
+p {
+    color: white;
     font-weight: 300; }
+h1{
+  color:white;
+}
+b{
+  color:whitesmoke;
+}
 
-  a {
+a {
     -webkit-transition: .3s all ease;
     -o-transition: .3s all ease;
     transition: .3s all ease; }
     a, a:hover {
       text-decoration: none !important; }
-
+.floatRight{
+  float:right;clear:right;
+  margin-left:20px
+}
     </style>
+
   </head>
           <div class="site-logo">
-            <a href="/index.html" class="font-weight-bold text-white">Food Menu</a>
+            <a href="" class="font-weight-bold text-white">Food Menu</a>
           </div>
       {% block content %} 
 <h1>You might like these foods</h1>
 <ol>
 {% for i in foods   %}
-   <li>
+<div>
+  <li>
      <ul>
-       <li><b>{{i.food_name}}</b></li>
+       <li><b>-</b> <b>{{i.food_name}}</b><img  src={{i.image.url}} style="width: 20%; height: 30%;" class="floatRight"></li>
        <p>{{i.price}}$</p>
        <p>Description:     {{i.description}}</p>
-       <p>Recepie:         {{i.recepie}}</p>
+       <p>Recepie:         {{i.recepie|safe}}</p>
      </ul>
-   </li>
+     <br><br><br>
+   </li><br><br><br>
+</div>
 {% endfor  %}
 </ol>
 {% endblock %}

@@ -14,7 +14,13 @@ def assign_category(request):
             for category in form.cleaned_data.get("categories"):
                 foods.extend(category.food.all())
             return render(request,'show_items.html',{"foods":foods})
-    form=CreatePersonForm()
+    if request.user.categories.exists(): 
+        foods = []
+        for category in request.user.categories.all(): 
+            foods.extend(category.food.all())
+        return render(request,'show_items.html',{"foods":foods}) 
+    
+    form=CreatePersonForm()    
     return render(request, "selectcategory.html", {"form": form})
 
 def show_relatives_items(request):
