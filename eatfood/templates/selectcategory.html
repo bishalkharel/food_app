@@ -1,9 +1,10 @@
 
+{% load crispy_forms_tags %}
 {% extends 'base.html' %}
-
 {% block title %}Please Select Category{% endblock %}
 
 {% block content %}
+
 {% if user.is_authenticated %}
  <h3<b> Hi {{ user.username }}!</b></h3>
   <br>
@@ -12,12 +13,10 @@
 
     {% csrf_token %}
 
-    {{ form}}
+    {{ form | crispy }}
 
-    <button class="button is-success is-fullwidth is-medium mt-5"
-
-            type="submit">Add
-
+    <button class="button is-success is-fullwidth is-medium mt-5" type="submit">
+      Add
     </button>
 
 </form>

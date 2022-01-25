@@ -1,13 +1,10 @@
 <!-- eat food login page -->
-{% extends 'base.html' %}
-
-{% block title %}Login{% endblock %}
-
-{% block content %}
-<h2>Log In</h2>
-<form method="post">
+{% extends 'base.html' %} {% load crispy_forms_tags %} {% block title %}Login {% endblock %} {% block content %}
+<h2 class="heading-4">Log In</h2>
+<form method="post" class="m-5 p-3 bg-warning">
   {% csrf_token %}
-  {{ form.as_p }}
+  <div>{{ form.username|as_crispy_field }}</div>
+  <div>{{ form.password |as_crispy_field }}</div>
   <button type="submit">Log In</button>
 </form>
 {% endblock %}

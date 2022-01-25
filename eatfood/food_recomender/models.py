@@ -21,8 +21,6 @@ class FoodProduct(models.Model):
 
 class Person(AbstractUser):
     name=models.CharField(max_length=20)
-
     categories=models.ManyToManyField(Category,related_name="category")
-    
     def __str__(self):
         return self.name

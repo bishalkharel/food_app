@@ -1,67 +1,47 @@
+{% extends 'base.html' %}
 {%  load static    %}
 <!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
-    <title>Website Menu</title>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <style type="text/css">
 
-body {
-    background-image: url({% static 'use_background.jpg'  %});
-    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    position: relative;
-            }
-
-p {
-    color: white;
-    font-weight: 300; }
-h1{
-  color:white;
-}
-b{
-  color:whitesmoke;
-}
-
-a {
-    -webkit-transition: .3s all ease;
-    -o-transition: .3s all ease;
-    transition: .3s all ease; }
-    a, a:hover {
-      text-decoration: none !important; }
-.floatRight{
-  float:right;clear:right;
-  margin-left:20px
-}
-    </style>
-
-  </head>
-          <div class="site-logo">
-            <a href="" class="font-weight-bold text-white">Food Menu</a>
+    {% block content %} 
+      <div class="d-flex justify-content-between align-items-center">
+        <div>
+          <div>
+            <h3 class="heading-3">Suggestions</h3>
+        </div>
+          <div>
+              {%for category in request.user.categories.all%}
+              <small class="text-muted">{{category.name}}, </small>
+              {%endfor%}
           </div>
-      {% block content %} 
-<h1>You might like these foods</h1>
-<ol>
-{% for i in foods   %}
-<div>
-  <li>
-     <ul>
-       <li><b>-</b> <b>{{i.food_name}}</b><img  src={{i.image.url}} style="width: 20%; height: 30%;" class="floatRight"></li>
-       <p>{{i.price}}$</p>
-       <p>Description:     {{i.description}}</p>
-       <p>Recepie:         {{i.recepie|safe}}</p>
-     </ul>
-     <br><br><br>
-   </li><br><br><br>
-</div>
-{% endfor  %}
-</ol>
-{% endblock %}
+        </div>
+        <div>
+          <p>{{request.user.username}}</p>
+          <a>Logout</a>
+        </div>
+      </div>
+      <hr />
+      <div class=" d-flex justify-content-left">
+        {% for i in foods %}
+        <div class="bg-light mx-2 border shadow p-3" style="min-width:250px;max-width:250px">
+            <h4>{{i.food_name}}</h4>
+            <small class="text-muted">
+              {{i.category.name}}
+            </small>
+            <div>
+              <div>
+                <img src="{{i.image.url}}" alt="food image" width="200" height="200">
+              </div>
+              <div>
+                <p>{{i.price}}</p>
+                <p>{{i.description|safe}}</p>
+                <b>Instruction</b>
+                <p>{{i.recepie|safe}}</p>
+              </div>
+            </div>
+        </div>
+        {% endfor  %}
+      </div>
+    {% endblock %}
 
   </body>
 </html>
