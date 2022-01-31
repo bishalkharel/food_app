@@ -1,4 +1,3 @@
-from os import name
 from django import forms
 from .models import Person
 from food_recomender.models import Category

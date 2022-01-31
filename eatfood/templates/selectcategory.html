@@ -1,15 +1,14 @@
-
-{% load crispy_forms_tags %}
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 {% block title %}Please Select Category{% endblock %}
 
 {% block content %}
 
 {% if user.is_authenticated %}
- <h3<b> Hi {{ user.username }}!</b></h3>
+<h3<b> Hi {{ user.username }}!</b></h3>
   <br>
   <br>
-<form method="post">
+  <form method="post">
 
     {% csrf_token %}
 
@@ -19,9 +18,9 @@
       Add
     </button>
 
-</form>
-{% else %}
+  </form>
+  {% else %}
   <p>Please login to select category</p>
   <a href="{% url 'login' %}">Log In</a>
-{% endif %}
-{% endblock %}
+  {% endif %}
+  {% endblock %}
