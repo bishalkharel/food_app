@@ -7,6 +7,9 @@
 poetry shell
 poetry install
 ```
+```
+python manage.py runserver
+```
 
 # Make sure to insert stuff to the db at first or maybe not lol if you don't wanna
 
