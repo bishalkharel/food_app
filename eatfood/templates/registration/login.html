@@ -11,7 +11,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="shortcut icon" href="/core/profiles/demo_umami/themes/umami/favicon.ico" type="image/vnd.microsoft.icon" />
 
-  <title>Log in | Umami Food Magazine</title>
+  <title>Log in | ABC Fodd Maganize</title>
   <link rel="stylesheet" media="all" href={% static 'css/home_third.css' %} />
   <link rel="stylesheet" media="all" href={% static 'css/home.css' %} />
   <link rel="stylesheet" media="all" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i" />
@@ -67,7 +67,7 @@
 
               <h2 class="block__title visually-hidden">Search</h2>
 
-              <form action="/search/node" method="get" id="search-block-form" accept-charset="UTF-8">
+              <form action="{% url 'search' %}" method="get" id="search-block-form" accept-charset="UTF-8">
                 <div
                   class="js-form-item form-item js-form-type-search form-type-search js-form-item-keys form-item-keys form-no-label">
                   <label for="edit-keys" class="visually-hidden">Search</label>
@@ -89,13 +89,18 @@
 
               <h2 class="block__title visually-hidden" id="block-umami-account-menu-menu">User account menu</h2>
               <ul class="menu-account">
-                <li class="menu-account__item"> <a href="/user/login" class="menu-account__link is-active"
-                    data-drupal-link-system-path={% url 'login' %}>Log in</a>
-                </li>
+                <li class="menu-account__item">
+                  {% if request.user.is_authenticated %}
+                  <a href={% url 'logout' %} class="menu-account__link" data-drupal-link-system-path="user/login">Log
+                    out</a>
+                  {% else %}
+                  <a href={% url 'login' %} class="menu-account__link" data-drupal-link-system-path="user/login">Log
+                    in</a>
                 <li class="menu-account__item"> <a href={% url 'signup' %} class="menu-account__link is-active"
                     data-drupal-link-system-path="user/login">Sign Up</a>
                 </li>
-              </ul>
+                {% endif %}
+                </li>
             </nav>
 
           </div>
@@ -108,7 +113,7 @@
                 <h1>Home</h1>
               </a>
               <div class="site-name visually-hidden">
-                <a href="/" title="Home" rel="home">Umami Food Magazine</a>
+                <a href="/" title="Home" rel="home">ABC Fodd Maganize</a>
               </div>
             </div>
 
@@ -239,7 +244,7 @@
                     required="required" aria-required="true" />
 
                   <div id="edit-name--description" class="description">
-                    Enter your Umami Food Magazine username.
+                    Enter your ABC Fodd Maganize username.
                   </div>
                 </div>
                 <div
@@ -391,9 +396,7 @@
                 <div class="footer-promo-content">
 
                   <div class="field field--name-field-promo-image field--type-image field--label-hidden field__item">
-                    <img src="/sites/default/files/styles/medium_8_7/public/umami-bundle.png?itok=gycUkviq" width="266"
-                      height="236" alt="3 issue bundle of the Umami food magazine" typeof="foaf:Image"
-                      class="image-style-medium-8-7" />
+
 
 
                   </div>
@@ -438,8 +441,11 @@
 
               <div
                 class="clearfix text-formatted field field--name-field-disclaimer field--type-text-long field--label-hidden field__item">
-                <p><strong>Umami Magazine &amp; Umami Publications</strong> is a fictional magazine and publisher for
-                  illustrative purposes only.</p>
+                <p>
+                  <strong>
+                    ABC Food Magazine
+                  </strong>
+                </p>
               </div>
 
               <div

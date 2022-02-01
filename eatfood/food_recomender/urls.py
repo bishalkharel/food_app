@@ -13,4 +13,7 @@ urlpatterns = [
     path("signup/", views.signup_page, name="signup"),
     path("recipes/", views.recipe_page, name="recipes"),
     path("recipe_detail/<int:id>", views.recipe_detail, name="recipe_detail"),
+    path("articles/", views.all_articles, name="all_articles"),
+    path("article_detail/<int:id>", views.article_detail, name="article_detail"),
+    path("search/", views.search, name="search"),
 ]

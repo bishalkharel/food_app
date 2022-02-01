@@ -12,7 +12,7 @@
     <link rel="shortcut icon" href="/core/profiles/demo_umami/themes/umami/favicon.ico"
         type="image/vnd.microsoft.icon" />
 
-    <title>Home | Umami Food Magazine</title>
+    <title>All Recipies | ABC Fodd Magazine</title>
     <link rel="stylesheet" media="all" href={% static 'css/home_third.css' %} />
     <link rel="stylesheet" media="all" href={% static 'css/home.css' %} />
     <link rel="stylesheet" media="all" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i" />
@@ -72,7 +72,7 @@
 
                             <h2 class="block__title visually-hidden">Search</h2>
 
-                            <form action="/search/node" method="get" id="search-block-form" accept-charset="UTF-8">
+                            <form action="{% url 'search' %}" method="get" id="search-block-form" accept-charset="UTF-8">
                                 <div
                                     class="js-form-item form-item js-form-type-search form-type-search js-form-item-keys form-item-keys form-no-label">
                                     <label for="edit-keys" class="visually-hidden">Search</label>
@@ -104,7 +104,11 @@
                                     {% else %}
                                     <a href={% url 'login' %} class="menu-account__link"
                                         data-drupal-link-system-path="user/login">Log in</a>
-                                    {% endif %}
+                                <li class="menu-account__item"> <a href={% url 'signup' %}
+                                        class="menu-account__link is-active"
+                                        data-drupal-link-system-path="user/login">Sign Up</a>
+                                </li>
+                                {% endif %}
                                 </li>
                             </ul>
 
@@ -123,7 +127,7 @@
                                 </h3>
                             </a>
                             <div class="site-name visually-hidden">
-                                <a href="/" title="Home" rel="home">Umami Food Magazine</a>
+                                <a href="/" title="Home" rel="home">ABC Fodd Maganize</a>
                             </div>
                         </div>
 
@@ -208,347 +212,339 @@
 
                                 <div
                                     class="field field--name-field-content-link field--type-link field--label-hidden field__item">
-                                    <a href={url 'recpie_detail' random_food.pk %}>view recipe</a></div>
+                                    <a href={% url 'recipe_detail' random_food.pk %}>view recipe</a></div>
 
 
                             </div>
                         </div>
+                    </div>
 
 
-
-                        <div class="layout-breadcrumbs">
-                            <div class="container">
-                                <div class="region region-breadcrumbs">
-                                    <div id="block-breadcrumbs"
-                                        class="block block-system block-system-breadcrumb-block">
+                    <div class="layout-breadcrumbs">
+                        <div class="container">
+                            <div class="region region-breadcrumbs">
+                                <div id="block-breadcrumbs" class="block block-system block-system-breadcrumb-block">
 
 
-                                        <nav class="breadcrumb" role="navigation" aria-labelledby="system-breadcrumb">
-                                            <h2 id="system-breadcrumb" class="visually-hidden">Breadcrumb</h2>
-                                            <ol>
-                                                <li>
-                                                    <a href="/">Home</a>
-                                                </li>
-                                                <li> Recipes</li>
-                                            </ol>
-                                        </nav>
-
-                                    </div>
+                                    <nav class="breadcrumb" role="navigation" aria-labelledby="system-breadcrumb">
+                                        <h2 id="system-breadcrumb" class="visually-hidden">Breadcrumb</h2>
+                                        <ol>
+                                            <li>
+                                                <a href="/">Home</a>
+                                            </li>
+                                            <li> Recipes</li>
+                                        </ol>
+                                    </nav>
 
                                 </div>
 
                             </div>
+
                         </div>
+                    </div>
 
-                        <div class="layout-page-title">
-                            <div class="container">
-                                <div class="region region-page-title">
-                                    <div id="block-umami-page-title--2" class="block block-core block-page-title-block">
-
-
-
-                                        <h1 class="page-title">Recipes</h1>
+                    <div class="layout-page-title">
+                        <div class="container">
+                            <div class="region region-page-title">
+                                <div id="block-umami-page-title--2" class="block block-core block-page-title-block">
 
 
-                                    </div>
+
+                                    <h1 class="page-title">Recipes</h1>
+
 
                                 </div>
 
                             </div>
+
                         </div>
+                    </div>
 
-                        <main role="main" class="main container">
+                    <main role="main" class="main container">
 
-                            <div class="layout-content">
-                                <a id="main-content" tabindex="-1"></a>
-                                <div class="region region-content">
-                                    <div id="block-umami-content" class="block block-system block-system-main-block">
-
-
-                                        <div class="views-element-container">
-                                            <div
-                                                class="grid--4 view view-recipes view-id-recipes view-display-id-page_1 js-view-dom-id-3a7f14058fa6d20337c97ddf6f7469e583dcf802783c0cdd6ac82f0320a09222">
+                        <div class="layout-content">
+                            <a id="main-content" tabindex="-1"></a>
+                            <div class="region region-content">
+                                <div id="block-umami-content" class="block block-system block-system-main-block">
 
 
-
-                                                <div class="view-content">
-                                                    {% for food in foods  %}
-
-                                                    <div class="views-row">
+                                    <div class="views-element-container">
+                                        <div
+                                            class="grid--4 view view-recipes view-id-recipes view-display-id-page_1 js-view-dom-id-3a7f14058fa6d20337c97ddf6f7469e583dcf802783c0cdd6ac82f0320a09222">
 
 
-                                                        <article data-history-node-id="8" role="article"
-                                                            about="/recipes/deep-mediterranean-quiche"
-                                                            class="node node--type-recipe node--promoted view-mode-card node--view-mode-card">
+
+                                            <div class="view-content">
+                                                {% for food in foods  %}
+
+                                                <div class="views-row">
 
 
-                                                            <h2 class="node__title">
-                                                                <span
-                                                                    class="field field--name-title field--type-string field--label-hidden">
-                                                                    {{food.food_name}}</span>
-
-                                                            </h2>
+                                                    <article data-history-node-id="8" role="article"
+                                                        about="/recipes/deep-mediterranean-quiche"
+                                                        class="node node--type-recipe node--promoted view-mode-card node--view-mode-card">
 
 
-                                                            <div class="node__content">
+                                                        <h2 class="node__title">
+                                                            <span
+                                                                class="field field--name-title field--type-string field--label-hidden">
+                                                                {{food.food_name}}</span>
 
-                                                                <div
-                                                                    class="field field--name-field-image field--type-image field--label-hidden field__item">
-                                                                    <img sizes="100vw" src={{food.image.url}}
-                                                                        alt="A delicious deep layered Mediterranean quiche with basil garnish."
-                                                                        typeof="foaf:Image" />
-                                                                </div>
+                                                        </h2>
 
+
+                                                        <div class="node__content">
+
+                                                            <div
+                                                                class="field field--name-field-image field--type-image field--label-hidden field__item">
+                                                                <img sizes="100vw" src={{food.image.url}}
+                                                                    alt="A delicious deep layered Mediterranean quiche with basil garnish."
+                                                                    typeof="foaf:Image" />
                                                             </div>
 
-                                                            <div class="read-more">
-                                                                <a class="read-more__link"
-                                                                    href={% url 'recipe_detail' food.id %}>
-                                                                    View Recipe <span class="visually-hidden"> -
-                                                                        <span
-                                                                            class="field field--name-title field--type-string field--label-hidden">{{food.description}}</span>
-                                                                    </span>
-                                                                </a>
-                                                            </div>
+                                                        </div>
 
-                                                        </article>
-                                                    </div>
-                                                    {% endfor %}
+                                                        <div class="read-more">
+                                                            <a class="read-more__link"
+                                                                href={% url 'recipe_detail' food.id %}>
+                                                                View Recipe <span class="visually-hidden"> -
+                                                                    <span
+                                                                        class="field field--name-title field--type-string field--label-hidden">{{food.description}}</span>
+                                                                </span>
+                                                            </a>
+                                                        </div>
 
+                                                    </article>
                                                 </div>
-
-                        </main>
-
-                        <div class="layout-content-bottom">
-                            <div class="region region-content-bottom">
-                                <div class="views-element-container block block-views block-views-blockrecipe-collections-block"
-                                    id="block-views-block-recipe-collections-block">
-
-                                    <h2 class="block__title">Recipe collections</h2>
-
-
-                                    <div class="container">
-                                        <div>
-                                            <div
-                                                class="view view-recipe-collections view-id-recipe_collections view-display-id-block js-view-dom-id-b7ebec520965cfed13c85be5d6e901e76b2def035703ffd16efa913b11a58432">
-
-
-
-                                                <div class="view-content">
-                                                    <div class="views-view-grid vertical cols-4 clearfix">
-                                                        <div class="views-col clearfix col-1">
-                                                            <div class="views-row row-1">
-                                                                <div class="views-field views-field-name"><span
-                                                                        class="field-content"><a
-                                                                            href="/tags/alcohol-free"
-                                                                            hreflang="en">Alcohol
-                                                                            free</a></span></div>
-                                                            </div>
-                                                            <div class="views-row row-2">
-                                                                <div class="views-field views-field-name"><span
-                                                                        class="field-content"><a href="/tags/baked"
-                                                                            hreflang="en">Baked</a></span></div>
-                                                            </div>
-                                                            <div class="views-row row-3">
-                                                                <div class="views-field views-field-name"><span
-                                                                        class="field-content"><a href="/tags/baking"
-                                                                            hreflang="en">Baking</a></span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="views-row row-4">
-                                                                <div class="views-field views-field-name"><span
-                                                                        class="field-content"><a href="/tags/breakfast"
-                                                                            hreflang="en">Breakfast</a></span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="views-col clearfix col-2">
-                                                            <div class="views-row row-1">
-                                                                <div class="views-field views-field-name"><span
-                                                                        class="field-content"><a href="/tags/cake"
-                                                                            hreflang="en">Cake</a></span></div>
-                                                            </div>
-                                                            <div class="views-row row-2">
-                                                                <div class="views-field views-field-name"><span
-                                                                        class="field-content"><a href="/tags/carrots"
-                                                                            hreflang="en">Carrots</a></span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="views-row row-3">
-                                                                <div class="views-field views-field-name"><span
-                                                                        class="field-content"><a
-                                                                            href="/tags/cocktail-party"
-                                                                            hreflang="en">Cocktail
-                                                                            party</a></span></div>
-                                                            </div>
-                                                            <div class="views-row row-4">
-                                                                <div class="views-field views-field-name"><span
-                                                                        class="field-content"><a href="/tags/dessert"
-                                                                            hreflang="en">Dessert</a></span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="views-col clearfix col-3">
-                                                            <div class="views-row row-1">
-                                                                <div class="views-field views-field-name"><span
-                                                                        class="field-content"><a
-                                                                            href="/tags/dinner-party"
-                                                                            hreflang="en">Dinner
-                                                                            party</a></span></div>
-                                                            </div>
-                                                            <div class="views-row row-2">
-                                                                <div class="views-field views-field-name"><span
-                                                                        class="field-content"><a href="/tags/drinks"
-                                                                            hreflang="en">Drinks</a></span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="views-row row-3">
-                                                                <div class="views-field views-field-name"><span
-                                                                        class="field-content"><a href="/tags/egg"
-                                                                            hreflang="en">Egg</a></span></div>
-                                                            </div>
-                                                            <div class="views-row row-4">
-                                                                <div class="views-field views-field-name"><span
-                                                                        class="field-content"><a
-                                                                            href="/tags/grow-your-own"
-                                                                            hreflang="en">Grow your
-                                                                            own</a></span></div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="views-col clearfix col-4">
-                                                            <div class="views-row row-1">
-                                                                <div class="views-field views-field-name"><span
-                                                                        class="field-content"><a href="/tags/healthy"
-                                                                            hreflang="en">Healthy</a></span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="views-row row-2">
-                                                                <div class="views-field views-field-name"><span
-                                                                        class="field-content"><a href="/tags/herbs"
-                                                                            hreflang="en">Herbs</a></span></div>
-                                                            </div>
-                                                            <div class="views-row row-3">
-                                                                <div class="views-field views-field-name"><span
-                                                                        class="field-content"><a
-                                                                            href="/tags/learn-to-cook"
-                                                                            hreflang="en">Learn to
-                                                                            cook</a></span></div>
-                                                            </div>
-                                                            <div class="views-row row-4">
-                                                                <div class="views-field views-field-name"><span
-                                                                        class="field-content"><a href="/tags/mushrooms"
-                                                                            hreflang="en">Mushrooms</a></span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-
+                                                {% endfor %}
                                             </div>
                                         </div>
-
-
                                     </div>
-                                </div>
+                    </main>
 
-                            </div>
+                    <div class="layout-content-bottom">
+                        <div class="region region-content-bottom">
+                            <div class="views-element-container block block-views block-views-blockrecipe-collections-block"
+                                id="block-views-block-recipe-collections-block">
 
-                        </div>
+                                <h2 class="block__title">Recipe collections</h2>
 
-                        <div class="layout-footer">
-                            <footer class="footer" role="contentinfo">
+
                                 <div class="container">
-                                    <div class="region region-footer">
-                                        <div id="block-umami-footer-promo" class="block-type-footer-promo-block">
+                                    <div>
+                                        <div
+                                            class="view view-recipe-collections view-id-recipe_collections view-display-id-block js-view-dom-id-b7ebec520965cfed13c85be5d6e901e76b2def035703ffd16efa913b11a58432">
 
 
-                                            <h2 class="block__title">
-                                                <div
-                                                    class="field field--name-field-title field--type-string field--label-hidden field__item">
-                                                    Umami Food Magazine</div>
-                                            </h2>
 
-                                            <div class="footer-promo-content">
-
-                                                <div
-                                                    class="field field--name-field-promo-image field--type-image field--label-hidden field__item">
-                                                    <img src="/sites/default/files/styles/medium_8_7/public/umami-bundle.png?itok=gycUkviq"
-                                                        width="266" height="236"
-                                                        alt="3 issue bundle of the Umami food magazine"
-                                                        typeof="foaf:Image" class="image-style-medium-8-7" />
-
-
+                                            <div class="view-content">
+                                                <div class="views-view-grid vertical cols-4 clearfix">
+                                                    <div class="views-col clearfix col-1">
+                                                        <div class="views-row row-1">
+                                                            <div class="views-field views-field-name"><span
+                                                                    class="field-content"><a href="/tags/alcohol-free"
+                                                                        hreflang="en">Alcohol
+                                                                        free</a></span></div>
+                                                        </div>
+                                                        <div class="views-row row-2">
+                                                            <div class="views-field views-field-name"><span
+                                                                    class="field-content"><a href="/tags/baked"
+                                                                        hreflang="en">Baked</a></span></div>
+                                                        </div>
+                                                        <div class="views-row row-3">
+                                                            <div class="views-field views-field-name"><span
+                                                                    class="field-content"><a href="/tags/baking"
+                                                                        hreflang="en">Baking</a></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="views-row row-4">
+                                                            <div class="views-field views-field-name"><span
+                                                                    class="field-content"><a href="/tags/breakfast"
+                                                                        hreflang="en">Breakfast</a></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="views-col clearfix col-2">
+                                                        <div class="views-row row-1">
+                                                            <div class="views-field views-field-name"><span
+                                                                    class="field-content"><a href="/tags/cake"
+                                                                        hreflang="en">Cake</a></span></div>
+                                                        </div>
+                                                        <div class="views-row row-2">
+                                                            <div class="views-field views-field-name"><span
+                                                                    class="field-content"><a href="/tags/carrots"
+                                                                        hreflang="en">Carrots</a></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="views-row row-3">
+                                                            <div class="views-field views-field-name"><span
+                                                                    class="field-content"><a href="/tags/cocktail-party"
+                                                                        hreflang="en">Cocktail
+                                                                        party</a></span></div>
+                                                        </div>
+                                                        <div class="views-row row-4">
+                                                            <div class="views-field views-field-name"><span
+                                                                    class="field-content"><a href="/tags/dessert"
+                                                                        hreflang="en">Dessert</a></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="views-col clearfix col-3">
+                                                        <div class="views-row row-1">
+                                                            <div class="views-field views-field-name"><span
+                                                                    class="field-content"><a href="/tags/dinner-party"
+                                                                        hreflang="en">Dinner
+                                                                        party</a></span></div>
+                                                        </div>
+                                                        <div class="views-row row-2">
+                                                            <div class="views-field views-field-name"><span
+                                                                    class="field-content"><a href="/tags/drinks"
+                                                                        hreflang="en">Drinks</a></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="views-row row-3">
+                                                            <div class="views-field views-field-name"><span
+                                                                    class="field-content"><a href="/tags/egg"
+                                                                        hreflang="en">Egg</a></span></div>
+                                                        </div>
+                                                        <div class="views-row row-4">
+                                                            <div class="views-field views-field-name"><span
+                                                                    class="field-content"><a href="/tags/grow-your-own"
+                                                                        hreflang="en">Grow your
+                                                                        own</a></span></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="views-col clearfix col-4">
+                                                        <div class="views-row row-1">
+                                                            <div class="views-field views-field-name"><span
+                                                                    class="field-content"><a href="/tags/healthy"
+                                                                        hreflang="en">Healthy</a></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="views-row row-2">
+                                                            <div class="views-field views-field-name"><span
+                                                                    class="field-content"><a href="/tags/herbs"
+                                                                        hreflang="en">Herbs</a></span></div>
+                                                        </div>
+                                                        <div class="views-row row-3">
+                                                            <div class="views-field views-field-name"><span
+                                                                    class="field-content"><a href="/tags/learn-to-cook"
+                                                                        hreflang="en">Learn to
+                                                                        cook</a></span></div>
+                                                        </div>
+                                                        <div class="views-row row-4">
+                                                            <div class="views-field views-field-name"><span
+                                                                    class="field-content"><a href="/tags/mushrooms"
+                                                                        hreflang="en">Mushrooms</a></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
 
-                                                <div
-                                                    class="field field--name-field-summary field--type-string-long field--label-hidden field__item">
-                                                    Skills and know-how. Magazine exclusive articles, recipes
-                                                    and plenty of reasons
-                                                    to get your copy today.</div>
-
-                                                <div
-                                                    class="field field--name-field-content-link field--type-link field--label-hidden field__item">
-                                                    <a href="/about-umami">Find out more</a></div>
-
                                             </div>
-                                        </div>
-                                        <div id="block-umami-footer"
-                                            class="block block-system block-system-menu-blockfooter menu-footer-wrapper">
-
-                                            <h2 class="block__title menu-footer__title">Tell us what you think
-                                            </h2>
-
-
-
-                                            <ul class="menu-footer">
-                                                <li class="menu-footer__item"> <a href="/contact"
-                                                        class="menu-footer__link"
-                                                        data-drupal-link-system-path="contact">Contact</a>
-                                                </li>
-                                            </ul>
-
 
                                         </div>
-
                                     </div>
 
-                                </div>
-                            </footer>
-                        </div>
-
-                        <div class="layout-bottom">
-                            <div class="container">
-                                <div class="region region-bottom">
-                                    <div id="block-umami-disclaimer"
-                                        class="block-type-disclaimer-block block block-block-content block-block-content9b4dcd67-99f3-48d0-93c9-2c46648b29de">
-
-
-
-                                        <div
-                                            class="clearfix text-formatted field field--name-field-disclaimer field--type-text-long field--label-hidden field__item">
-                                            <p><strong>Umami Magazine &amp; Umami Publications</strong> is a
-                                                fictional magazine and
-                                                publisher for illustrative purposes only.</p>
-                                        </div>
-
-                                        <div
-                                            class="clearfix text-formatted field field--name-field-copyright field--type-text-long field--label-hidden field__item">
-                                            <p>© 2018 Terms &amp; Conditions</p>
-                                        </div>
-
-                                    </div>
 
                                 </div>
-
                             </div>
+
                         </div>
 
                     </div>
+
+                    <div class="layout-footer">
+                        <footer class="footer" role="contentinfo">
+                            <div class="container">
+                                <div class="region region-footer">
+                                    <div id="block-umami-footer-promo" class="block-type-footer-promo-block">
+
+
+                                        <h2 class="block__title">
+                                            <div
+                                                class="field field--name-field-title field--type-string field--label-hidden field__item">
+                                                ABC Fodd Maganize</div>
+                                        </h2>
+
+                                        <div class="footer-promo-content">
+
+                                            <div
+                                                class="field field--name-field-promo-image field--type-image field--label-hidden field__item">
+
+
+
+                                            </div>
+
+                                            <div
+                                                class="field field--name-field-summary field--type-string-long field--label-hidden field__item">
+                                                Skills and know-how. Magazine exclusive articles, recipes
+                                                and plenty of reasons
+                                                to get your copy today.</div>
+
+                                            <div
+                                                class="field field--name-field-content-link field--type-link field--label-hidden field__item">
+                                                <a href="/about-umami">Find out more</a></div>
+
+                                        </div>
+                                    </div>
+                                    <div id="block-umami-footer"
+                                        class="block block-system block-system-menu-blockfooter menu-footer-wrapper">
+
+                                        <h2 class="block__title menu-footer__title">Tell us what you think
+                                        </h2>
+
+
+
+                                        <ul class="menu-footer">
+                                            <li class="menu-footer__item"> <a href="/contact" class="menu-footer__link"
+                                                    data-drupal-link-system-path="contact">Contact</a>
+                                            </li>
+                                        </ul>
+
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </footer>
+                    </div>
+
+                    <div class="layout-bottom">
+                        <div class="container">
+                            <div class="region region-bottom">
+                                <div id="block-umami-disclaimer"
+                                    class="block-type-disclaimer-block block block-block-content block-block-content9b4dcd67-99f3-48d0-93c9-2c46648b29de">
+
+
+
+                                    <div
+                                        class="clearfix text-formatted field field--name-field-disclaimer field--type-text-long field--label-hidden field__item">
+                                        <p>
+                                            <strong>
+                                                ABC Food Magazine
+                                            </strong>
+                                        </p>
+                                    </div>
+
+                                    <div
+                                        class="clearfix text-formatted field field--name-field-copyright field--type-text-long field--label-hidden field__item">
+                                        <p>© 2018 Terms &amp; Conditions</p>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
                 </div>
+            </div>
 
 
-                <script src="/sites/default/files/js/js_VFHjQ_JLFSX0ewbIFXJaQ0grcwkDNNmoDe73nab_VPA.js">
-                </script>
+            <script src="/sites/default/files/js/js_VFHjQ_JLFSX0ewbIFXJaQ0grcwkDNNmoDe73nab_VPA.js">
+            </script>
 
 </body>

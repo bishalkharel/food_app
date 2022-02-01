@@ -96,7 +96,6 @@
 
                             <h2 class="block__title visually-hidden" id="block-umami-account-menu-menu">User account
                                 menu</h2>
-
                             <ul class="menu-account">
                                 <li class="menu-account__item">
                                     {% if request.user.is_authenticated %}
@@ -105,9 +104,14 @@
                                     {% else %}
                                     <a href={% url 'login' %} class="menu-account__link"
                                         data-drupal-link-system-path="user/login">Log in</a>
-                                    {% endif %}
+                                <li class="menu-account__item"> <a href={% url 'signup' %}
+                                        class="menu-account__link is-active"
+                                        data-drupal-link-system-path="user/login">Sign Up</a>
+                                </li>
+                                {% endif %}
                                 </li>
                             </ul>
+
 
                         </nav>
 
@@ -182,6 +186,9 @@
             </div>
 
 
+
+
+
             <div class="layout-breadcrumbs">
                 <div class="container">
                     <div class="region region-breadcrumbs">
@@ -192,12 +199,12 @@
                                 <h2 id="system-breadcrumb" class="visually-hidden">Breadcrumb</h2>
                                 <ol>
                                     <li>
-                                        <a href="/">Home</a>
+                                        <a href="/index.php/">Home</a>
                                     </li>
                                     <li>
-                                        <a href="/recipes">Recipes</a>
+                                        <a href="/articles">Articles</a>
                                     </li>
-                                    <li> {{food.food_name}} </li>
+                                    <li>{{article.title}}</li>
                                 </ol>
                             </nav>
 
@@ -218,129 +225,156 @@
 
 
 
-
-                            <article data-history-node-id="8" role="article" about="/recipes/deep-mediterranean-quiche"
-                                class="node node--type-recipe node--promoted node--view-mode-full">
+                            <article data-history-node-id="1" role="article"
+                                about="/index.php/articles/give-it-a-go-and-grow-your-own-herbs" typeof="schema:Article"
+                                class="node node--type-article node--promoted node--view-mode-full">
 
 
                                 <header class="node__header">
                                     <h1 class="page-title">
-                                        <span
-                                            class="field field--name-title field--type-string field--label-hidden">{{food.food_name}}</span>
+                                        <span property="schema:name"
+                                            class="field field--name-title field--type-string field--label-hidden">{{article.title}}</span>
 
                                     </h1>
                                 </header>
+                                <div
+                                    class="field field--name-field-image field--type-image field--label-hidden field__item">
+                                    <img property="schema:image" sizes="100vw" src={{article.image.url}}
+                                        alt="Fresh cut herbs including mint, parsley, thyme and dill"
+                                        typeof="foaf:Image" />
 
 
+                                </div>
 
-                                <div class="node__content">
+                                <div property="schema:text"
+                                    class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item">
+                                    <p>
 
-                                    <div
-                                        class="clearfix text-formatted field field--name-field-summary field--type-text-long field--label-hidden field__item">
-                                        <p>{{food.description}}</p>
-                                    </div>
-                                    <div
-                                        class="field field--name-field-image field--type-image field--label-hidden field__item">
-                                        <img sizes="100vw" src={{food.image.url}} typeof="foaf:Image" />
+                                        {{article.content | safe}}
+                                    </p>
 
-
-                                    </div>
-                                    {{food.recipe | safe}}
-
+                                </div>
+                                <div class="node__links">
+                                    <ul class="links inline">
+                                        <li class="comment-forbidden"></li>
+                                    </ul>
                                 </div>
 
                         </div>
 
-            </main>
+                        </article>
 
-            <div class="layout-content-bottom">
-                <div class="region region-content-bottom">
-                    <div class="views-element-container block block-views block-views-blockrecipe-collections-block"
-                        id="block-views-block-recipe-collections-block">
+                    </div>
 
-                        <h2 class="block__title">Recipe collections</h2>
+                </div>
+
+        </div>
+
+        </main>
+
+        <div class="layout-content-bottom">
+            <div class="region region-content-bottom">
+                <div class="views-element-container block block-views block-views-blockrecipe-collections-block"
+                    id="block-views-block-recipe-collections-block">
+
+                    <h2 class="block__title">Recipe collections</h2>
 
 
-                        <div class="container">
-                            <div>
-                                <div
-                                    class="view view-recipe-collections view-id-recipe_collections view-display-id-block js-view-dom-id-b7ebec520965cfed13c85be5d6e901e76b2def035703ffd16efa913b11a58432">
+                    <div class="container">
+                        <div>
+                            <div
+                                class="view view-recipe-collections view-id-recipe_collections view-display-id-block js-view-dom-id-c9c7a9b0cddac43b2d0e0d0e1bb3618d31844095a23c179fab2e3ad47686b8f9">
 
 
 
-                                    <div class="view-content">
-                                        <div class="views-view-grid vertical cols-4 clearfix">
-                                            <div class="views-col clearfix col-1">
-                                                <div class="views-row row-1">
-                                                    <div class="views-field views-field-name"><span
-                                                            class="field-content">Alcohol Free</span></div>
+                                <div class="view-content">
+                                    <div class="views-view-grid vertical cols-4 clearfix">
+                                        <div class="views-col clearfix col-1">
+                                            <div class="views-row row-1">
+                                                <div class="views-field views-field-name"><span class="field-content"><a
+                                                            href="/index.php/tags/alcohol-free" hreflang="en">Alcohol
+                                                            free</a></span></div>
+                                            </div>
+                                            <div class="views-row row-2">
+                                                <div class="views-field views-field-name"><span class="field-content"><a
+                                                            href="/index.php/tags/baked" hreflang="en">Baked</a></span>
                                                 </div>
-                                                <div class="views-row row-2">
-                                                    <div class="views-field views-field-name"><span
-                                                            class="field-content">Baked</span></div>
-                                                </div>
-                                                <div class="views-field views-field-name"><span
-                                                        class="field-content">Baking</span></div>
+                                            </div>
+                                            <div class="views-row row-3">
+                                                <div class="views-field views-field-name"><span class="field-content"><a
+                                                            href="/index.php/tags/baking"
+                                                            hreflang="en">Baking</a></span></div>
                                             </div>
                                             <div class="views-row row-4">
-                                                <div class="views-field views-field-name"><span
-                                                        class="field-content">Break fast</span>
-                                                </div>
+                                                <div class="views-field views-field-name"><span class="field-content"><a
+                                                            href="/index.php/tags/breakfast"
+                                                            hreflang="en">Breakfast</a></span></div>
                                             </div>
                                         </div>
                                         <div class="views-col clearfix col-2">
                                             <div class="views-row row-1">
-                                                <div class="views-field views-field-name"><span
-                                                        class="field-content">Cake</span></div>
+                                                <div class="views-field views-field-name"><span class="field-content"><a
+                                                            href="/index.php/tags/cake" hreflang="en">Cake</a></span>
+                                                </div>
                                             </div>
                                             <div class="views-row row-2">
-                                                <div class="views-field views-field-name"><span
-                                                        class="field-content">Carrot</span></div>
+                                                <div class="views-field views-field-name"><span class="field-content"><a
+                                                            href="/index.php/tags/carrots"
+                                                            hreflang="en">Carrots</a></span></div>
                                             </div>
                                             <div class="views-row row-3">
-                                                <div class="views-field views-field-name"><span
-                                                        class="field-content">Cocktail</span></div>
+                                                <div class="views-field views-field-name"><span class="field-content"><a
+                                                            href="/index.php/tags/cocktail-party" hreflang="en">Cocktail
+                                                            party</a></span></div>
                                             </div>
                                             <div class="views-row row-4">
                                                 <div class="views-field views-field-name"><span class="field-content"><a
-                                                            href="/tags/dessert" hreflang="en">Dessert</a></span></div>
+                                                            href="/index.php/tags/dessert"
+                                                            hreflang="en">Dessert</a></span></div>
                                             </div>
                                         </div>
                                         <div class="views-col clearfix col-3">
                                             <div class="views-row row-1">
-                                                <div class="views-field views-field-name"><span
-                                                        class="field-content">Dinner</span></div>
+                                                <div class="views-field views-field-name"><span class="field-content"><a
+                                                            href="/index.php/tags/dinner-party" hreflang="en">Dinner
+                                                            party</a></span></div>
                                             </div>
                                             <div class="views-row row-2">
-                                                <div class="views-field views-field-name"><span
-                                                        class="field-content">Drinks</span></div>
+                                                <div class="views-field views-field-name"><span class="field-content"><a
+                                                            href="/index.php/tags/drinks"
+                                                            hreflang="en">Drinks</a></span></div>
                                             </div>
                                             <div class="views-row row-3">
-                                                <div class="views-field views-field-name"><span
-                                                        class="field-content">Eggs</span></div>
+                                                <div class="views-field views-field-name"><span class="field-content"><a
+                                                            href="/index.php/tags/egg" hreflang="en">Egg</a></span>
+                                                </div>
                                             </div>
                                             <div class="views-row row-4">
-                                                <div class="views-field views-field-name"><span
-                                                        class="field-content">Grow your own</span></div>
+                                                <div class="views-field views-field-name"><span class="field-content"><a
+                                                            href="/index.php/tags/grow-your-own" hreflang="en">Grow
+                                                            your own</a></span></div>
                                             </div>
                                         </div>
                                         <div class="views-col clearfix col-4">
                                             <div class="views-row row-1">
-                                                <div class="views-field views-field-name"><span
-                                                        class="field-content">Healthy</span></div>
+                                                <div class="views-field views-field-name"><span class="field-content"><a
+                                                            href="/index.php/tags/healthy"
+                                                            hreflang="en">Healthy</a></span></div>
                                             </div>
                                             <div class="views-row row-2">
-                                                <div class="views-field views-field-name"><span
-                                                        class="field-content">Herbs</span></div>
+                                                <div class="views-field views-field-name"><span class="field-content"><a
+                                                            href="/index.php/tags/herbs" hreflang="en">Herbs</a></span>
+                                                </div>
                                             </div>
                                             <div class="views-row row-3">
-                                                <div class="views-field views-field-name"><span
-                                                        class="field-content">Learn to cook</span></div>
+                                                <div class="views-field views-field-name"><span class="field-content"><a
+                                                            href="/index.php/tags/learn-to-cook" hreflang="en">Learn
+                                                            to cook</a></span></div>
                                             </div>
                                             <div class="views-row row-4">
-                                                <div class="views-field views-field-name"><span
-                                                        class="field-content">Mushrooms</span>
-                                                </div>
+                                                <div class="views-field views-field-name"><span class="field-content"><a
+                                                            href="/index.php/tags/mushrooms"
+                                                            hreflang="en">Mushrooms</a></span></div>
                                             </div>
                                         </div>
                                     </div>
@@ -377,7 +411,6 @@
                                     class="field field--name-field-promo-image field--type-image field--label-hidden field__item">
 
 
-
                                 </div>
 
                                 <div
@@ -387,7 +420,7 @@
 
                                 <div
                                     class="field field--name-field-content-link field--type-link field--label-hidden field__item">
-                                    <a href="/about-umami">Find out more</a></div>
+                                    <a href="/index.php/about-umami">Find out more</a></div>
 
                             </div>
                         </div>

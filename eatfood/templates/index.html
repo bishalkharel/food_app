@@ -12,7 +12,7 @@
     <link rel="shortcut icon" href="/core/profiles/demo_umami/themes/umami/favicon.ico"
         type="image/vnd.microsoft.icon" />
 
-    <title>Home | Umami Food Magazine</title>
+    <title>Home | ABC Food Magazine</title>
     <link rel="stylesheet" media="all" href={% static 'css/home_third.css' %} />
     <link rel="stylesheet" media="all" href={% static 'css/home.css' %} />
     <link rel="stylesheet" media="all" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i" />
@@ -72,7 +72,7 @@
 
                             <h2 class="block__title visually-hidden">Search</h2>
 
-                            <form action="/search/node" method="get" id="search-block-form" accept-charset="UTF-8">
+                            <form action="{% url 'search' %}" method="get" id="search-block-form" accept-charset="UTF-8">
                                 <div
                                     class="js-form-item form-item js-form-type-search form-type-search js-form-item-keys form-item-keys form-no-label">
                                     <label for="edit-keys" class="visually-hidden">Search</label>
@@ -104,7 +104,11 @@
                                     {% else %}
                                     <a href={% url 'login' %} class="menu-account__link"
                                         data-drupal-link-system-path="user/login">Log in</a>
-                                    {% endif %}
+                                <li class="menu-account__item"> <a href={% url 'signup' %}
+                                        class="menu-account__link is-active"
+                                        data-drupal-link-system-path="user/login">Sign Up</a>
+                                </li>
+                                {% endif %}
                                 </li>
                             </ul>
 
@@ -123,7 +127,7 @@
                                 </h3>
                             </a>
                             <div class="site-name visually-hidden">
-                                <a href="/" title="Home" rel="home">Umami Food Magazine</a>
+                                <a href="/" title="Home" rel="home">ABC Fodd Maganize</a>
                             </div>
                         </div>
 
@@ -218,8 +222,7 @@
 
                                 <div
                                     class="field field--name-field-content-link field--type-link field--label-hidden field__item">
-                                    <a href={url 'recpie_detail' random_food.pk %}>view recipe</a></div>
-
+                                    <a href={% url 'recipe_detail' random_food.pk %}>view recipe</a></div>
 
                             </div>
                         </div>
@@ -247,8 +250,7 @@
 
                                             <h2 class="node__title">
                                                 <span property="schema:name"
-                                                    class="field field--name-title field--type-string field--label-hidden">Give
-                                                    your oatmeal the ultimate makeover</span>
+                                                    class="field field--name-title field--type-string field--label-hidden">{{random_article.title}}</span>
 
                                             </h2>
                                             <span property="schema:name"
@@ -261,8 +263,8 @@
                                                     href="/articles/give-your-oatmeal-the-ultimate-makeover">
                                                     View Article <span class="visually-hidden"> - <span
                                                             property="schema:name"
-                                                            class="field field--name-title field--type-string field--label-hidden">Give
-                                                            your oatmeal the ultimate makeover</span>
+                                                            class="field field--name-title field--type-string field--label-hidden">View
+                                                            Articel</span>
                                                     </span>
                                                 </a>
                                             </div>
@@ -271,10 +273,8 @@
 
                                                 <div
                                                     class="field field--name-field-image field--type-image field--label-hidden field__item">
-                                                    <img property="schema:image"
-                                                        srcset="/sites/default/files/styles/medium_3_2_600x400/public/oatmeal-fruit-syrup-topping.jpg?itok=XIDSjDXA 600w, /sites/default/files/styles/large_3_2_768x512/public/oatmeal-fruit-syrup-topping.jpg?itok=P3dUrQ_4 768w, /sites/default/files/styles/medium_3_2_2x/public/oatmeal-fruit-syrup-topping.jpg?itok=ysMVRrPB 1200w, /sites/default/files/styles/large_3_2_2x/public/oatmeal-fruit-syrup-topping.jpg?itok=V1pJUrDh 1536w"
-                                                        sizes="100vw"
-                                                        src="/sites/default/files/styles/large_3_2_768x512/public/oatmeal-fruit-syrup-topping.jpg?itok=P3dUrQ_4"
+                                                    <img property="schema:image" sizes="100vw"
+                                                        src={{random_article.image.url}}
                                                         alt="Oatmeal topped with a vibrant mix of berries, nuts, and seeds"
                                                         typeof="foaf:Image" />
 
@@ -455,13 +455,11 @@
                                             <div class="views-col clearfix col-1">
                                                 <div class="views-row row-1">
                                                     <div class="views-field views-field-name"><span
-                                                            class="field-content"><a href="/tags/alcohol-free"
-                                                                hreflang="en">Alcohol free</a></span></div>
+                                                            class="field-content">Alcohol Free</span></div>
                                                 </div>
                                                 <div class="views-row row-2">
                                                     <div class="views-field views-field-name"><span
-                                                            class="field-content"><a href="/tags/baked"
-                                                                hreflang="en">Baked</a></span></div>
+                                                            class="field-content">Baked</span></div>
                                                 </div>
                                                 <div class="views-row row-3">
                                                     <div class="views-field views-field-name"><span
@@ -565,7 +563,7 @@
                                 <h2 class="block__title">
                                     <div
                                         class="field field--name-field-title field--type-string field--label-hidden field__item">
-                                        Umami Food Magazine</div>
+                                        ABC Fodd Maganize</div>
                                 </h2>
 
                                 <div class="footer-promo-content">
@@ -573,7 +571,7 @@
                                     <div
                                         class="field field--name-field-promo-image field--type-image field--label-hidden field__item">
                                         <img src="/sites/default/files/styles/medium_8_7/public/umami-bundle.png?itok=gycUkviq"
-                                            width="266" height="236" alt="3 issue bundle of the Umami food magazine"
+                                            width="266" height="236" alt="3 issue bundle of the ABC Fodd Maganize"
                                             typeof="foaf:Image" class="image-style-medium-8-7" />
 
 
@@ -622,8 +620,11 @@
 
                             <div
                                 class="clearfix text-formatted field field--name-field-disclaimer field--type-text-long field--label-hidden field__item">
-                                <p><strong>Umami Magazine &amp; Umami Publications</strong> is a fictional magazine and
-                                    publisher for illustrative purposes only.</p>
+                                <p>
+                                    <strong>
+                                        ABC Food Magazine
+                                    </strong>
+                                </p>
                             </div>
 
                             <div

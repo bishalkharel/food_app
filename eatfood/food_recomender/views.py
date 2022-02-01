@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import CreatePersonForm
-from .models import Person, Category, FoodProduct
+from .models import Articel, Person, Category, FoodProduct
 from django.http import HttpRequest
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
@@ -44,10 +44,16 @@ def home(request: HttpRequest):
         foods = [category.food.all() for category in categories]
         foods = [j for i in foods for j in i]
     random_food = random.choice(foods)
+    random_article = random.choice(Articel.objects.all())
     return render(
         request,
         "index.html",
-        context={"foods_home": foods[:2], "foods": foods, "random_food": random_food},
+        context={
+            "foods_home": foods[:2],
+            "foods": foods,
+            "random_food": random_food,
+            "random_article": random_article,
+        },
     )
 
 
@@ -127,3 +133,25 @@ def recipe_detail(request, id):
             "food": food,
         },
     )
+
+
+def all_articles(request):
+    articles = Articel.objects.all()
+    return render(request, "all_articles.html", context={"articles": articles})
+
+
+def article_detail(request, id):
+    article = Articel.objects.get(id=id)
+    return render(
+        request,
+        "article_detail.html",
+        context={"article": article},
+    )
+
+
+def search(request: HttpRequest):
+    search_text = request.GET.get("keys")
+    foods = FoodProduct.objects.filter(
+        food_name__icontains=search_text, description__icontains=search_text
+    )
+    return render(request, "search.html", context={"foods": foods, "key": search_text})

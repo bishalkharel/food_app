@@ -12,7 +12,7 @@
     <link rel="shortcut icon" href="/core/profiles/demo_umami/themes/umami/favicon.ico"
         type="image/vnd.microsoft.icon" />
 
-    <title>Sing Up | Umami Food Magazine</title>
+    <title>Sing Up | ABC Fodd Maganize</title>
     <link rel="stylesheet" media="all" href={% static 'css/home_third.css' %} />
     <link rel="stylesheet" media="all" href={% static 'css/home.css' %} />
     <link rel="stylesheet" media="all" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i" />
@@ -74,7 +74,7 @@
 
                             <h2 class="block__title visually-hidden">Search</h2>
 
-                            <form action="/search/node" method="get" id="search-block-form" accept-charset="UTF-8">
+                            <form action="{% url 'search' %}" method="get" id="search-block-form" accept-charset="UTF-8">
                                 <div
                                     class="js-form-item form-item js-form-type-search form-type-search js-form-item-keys form-item-keys form-no-label">
                                     <label for="edit-keys" class="visually-hidden">Search</label>
@@ -99,9 +99,14 @@
                             <h2 class="block__title visually-hidden" id="block-umami-account-menu-menu">User account
                                 menu</h2>
                             <ul class="menu-account">
-                                <li class="menu-account__item">
-                                    <a href={% url 'login' %} class="menu-account__link is-active">Log In</a>
+                                <li class="menu-account__item"> <a href={% url 'login' %}
+                                        class="menu-account__link is-active">Log in</a>
                                 </li>
+                                <li class="menu-account__item"> <a href={% url 'signup' %}
+                                        class="menu-account__link is-active"
+                                        data-drupal-link-system-path="user/login">Sign Up</a>
+                                </li>
+                            </ul>
                             </ul>
                         </nav>
 
@@ -115,7 +120,7 @@
                                 <h1>Home</h1>
                             </a>
                             <div class="site-name visually-hidden">
-                                <a href="/" title="Home" rel="home">Umami Food Magazine</a>
+                                <a href="/" title="Home" rel="home">ABC Fodd Maganize</a>
                             </div>
                         </div>
 
@@ -253,7 +258,7 @@
                                         required="required" aria-required="true" />
 
                                     <div id="edit-name--description" class="description">
-                                        Enter your Umami Food Magazine username.
+                                        Enter your ABC Fodd Maganize username.
                                     </div>
                                 </div>
                                 <div
@@ -340,28 +345,27 @@
                                                             href="/tags/baked" hreflang="en">Baked</a></span></div>
                                             </div>
                                             <div class="views-row row-3">
-                                                <div class="views-field views-field-name"><span class="field-content"><a
-                                                            href="/tags/baking" hreflang="en">Baking</a></span></div>
+                                                <div class="views-field views-field-name"><span
+                                                        class="field-content">Baking</span></div>
                                             </div>
                                             <div class="views-row row-4">
-                                                <div class="views-field views-field-name"><span class="field-content"><a
-                                                            href="/tags/breakfast" hreflang="en">Breakfast</a></span>
+                                                <div class="views-field views-field-name"><span
+                                                        class="field-content">Break fast</span>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="views-col clearfix col-2">
                                             <div class="views-row row-1">
-                                                <div class="views-field views-field-name"><span class="field-content"><a
-                                                            href="/tags/cake" hreflang="en">Cake</a></span></div>
+                                                <div class="views-field views-field-name"><span
+                                                        class="field-content">Cake</span></div>
                                             </div>
                                             <div class="views-row row-2">
-                                                <div class="views-field views-field-name"><span class="field-content"><a
-                                                            href="/tags/carrots" hreflang="en">Carrots</a></span></div>
+                                                <div class="views-field views-field-name"><span
+                                                        class="field-content">Carrot</span></div>
                                             </div>
                                             <div class="views-row row-3">
-                                                <div class="views-field views-field-name"><span class="field-content"><a
-                                                            href="/tags/cocktail-party" hreflang="en">Cocktail
-                                                            party</a></span></div>
+                                                <div class="views-field views-field-name"><span
+                                                        class="field-content">Cocktail</span></div>
                                             </div>
                                             <div class="views-row row-4">
                                                 <div class="views-field views-field-name"><span class="field-content"><a
@@ -370,41 +374,38 @@
                                         </div>
                                         <div class="views-col clearfix col-3">
                                             <div class="views-row row-1">
-                                                <div class="views-field views-field-name"><span class="field-content"><a
-                                                            href="/tags/dinner-party" hreflang="en">Dinner
-                                                            party</a></span></div>
+                                                <div class="views-field views-field-name"><span
+                                                        class="field-content">Dinner</span></div>
                                             </div>
                                             <div class="views-row row-2">
-                                                <div class="views-field views-field-name"><span class="field-content"><a
-                                                            href="/tags/drinks" hreflang="en">Drinks</a></span></div>
+                                                <div class="views-field views-field-name"><span
+                                                        class="field-content">Drinks</span></div>
                                             </div>
                                             <div class="views-row row-3">
-                                                <div class="views-field views-field-name"><span class="field-content"><a
-                                                            href="/tags/egg" hreflang="en">Egg</a></span></div>
+                                                <div class="views-field views-field-name"><span
+                                                        class="field-content">Eggs</span></div>
                                             </div>
                                             <div class="views-row row-4">
-                                                <div class="views-field views-field-name"><span class="field-content"><a
-                                                            href="/tags/grow-your-own" hreflang="en">Grow your
-                                                            own</a></span></div>
+                                                <div class="views-field views-field-name"><span
+                                                        class="field-content">Eggs</span></div>
                                             </div>
                                         </div>
                                         <div class="views-col clearfix col-4">
                                             <div class="views-row row-1">
-                                                <div class="views-field views-field-name"><span class="field-content"><a
-                                                            href="/tags/healthy" hreflang="en">Healthy</a></span></div>
+                                                <div class="views-field views-field-name"><span
+                                                        class="field-content">Eggs</span></div>
                                             </div>
                                             <div class="views-row row-2">
-                                                <div class="views-field views-field-name"><span class="field-content"><a
-                                                            href="/tags/herbs" hreflang="en">Herbs</a></span></div>
+                                                <div class="views-field views-field-name"><span
+                                                        class="field-content">Herbs</span></div>
                                             </div>
                                             <div class="views-row row-3">
-                                                <div class="views-field views-field-name"><span class="field-content"><a
-                                                            href="/tags/learn-to-cook" hreflang="en">Learn to
-                                                            cook</a></span></div>
+                                                <div class="views-field views-field-name"><span
+                                                        class="field-content">Learn to cook</span></div>
                                             </div>
                                             <div class="views-row row-4">
-                                                <div class="views-field views-field-name"><span class="field-content"><a
-                                                            href="/tags/mushrooms" hreflang="en">Mushrooms</a></span>
+                                                <div class="views-field views-field-name"><span
+                                                        class="field-content">Mushrooms</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -441,9 +442,7 @@
 
                                 <div
                                     class="field field--name-field-promo-image field--type-image field--label-hidden field__item">
-                                    <img src="/sites/default/files/styles/medium_8_7/public/umami-bundle.png?itok=gycUkviq"
-                                        width="266" height="236" alt="3 issue bundle of the Umami food magazine"
-                                        typeof="foaf:Image" class="image-style-medium-8-7" />
+
 
 
                                 </div>
@@ -492,9 +491,11 @@
 
                         <div
                             class="clearfix text-formatted field field--name-field-disclaimer field--type-text-long field--label-hidden field__item">
-                            <p><strong>Umami Magazine &amp; Umami Publications</strong> is a fictional magazine and
-                                publisher for
-                                illustrative purposes only.</p>
+                            <p>
+                                <strong>
+                                    ABC Food Magazine
+                                </strong>
+                            </p>
                         </div>
 
                         <div
