@@ -117,12 +117,31 @@ argon2 = ["argon2-cffi (>=19.1.0)"]
 bcrypt = ["bcrypt"]
 
 [[package]]
+name = "django-ckeditor"
+version = "6.2.0"
+description = "Django admin CKEditor integration."
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+django-js-asset = ">=1.2.2"
+
+[[package]]
 name = "django-crispy-forms"
 version = "1.14.0"
 description = "Best way to have Django DRY forms"
 category = "main"
 optional = false
 python-versions = ">=3.7"
+
+[[package]]
+name = "django-js-asset"
+version = "1.2.2"
+description = "script tag with additional attributes for django.forms.Media"
+category = "main"
+optional = false
+python-versions = "*"
 
 [[package]]
 name = "docutils"
@@ -528,7 +547,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "ec817417e3bc76c3829db0b58e5d45131af87faf5bee7131ee7798acf0607149"
+content-hash = "561303ef70d7811af90fc44a69f788bc251d491eb2783e3976915717303c783e"
 
 [metadata.files]
 alabaster = [
@@ -634,9 +653,17 @@ django = [
     {file = "Django-4.0.1-py3-none-any.whl", hash = "sha256:7cd8e8a3ed2bc0dfda05ce1e53a9c81b30eefd7aa350e538a18884475e4d4ce2"},
     {file = "Django-4.0.1.tar.gz", hash = "sha256:2485eea3cc4c3bae13080dee866ebf90ba9f98d1afe8fda89bfb0eb2e218ef86"},
 ]
+django-ckeditor = [
+    {file = "django-ckeditor-6.2.0.tar.gz", hash = "sha256:df64dc9e62790ef824f609605d31be847bdbce1cc7aa94e49bd5ca60d7aa79bb"},
+    {file = "django_ckeditor-6.2.0-py2.py3-none-any.whl", hash = "sha256:9f66420907e41f5b4e698fa5671a00a86995776735f2c4696174aed4640fcbd8"},
+]
 django-crispy-forms = [
     {file = "django-crispy-forms-1.14.0.tar.gz", hash = "sha256:35887b8851a931374dd697207a8f56c57a9c5cb9dbf0b9fa54314da5666cea5b"},
     {file = "django_crispy_forms-1.14.0-py3-none-any.whl", hash = "sha256:bc4d2037f6de602d39c0bc452ac3029d1f5d65e88458872cc4dbc01c3a400604"},
+]
+django-js-asset = [
+    {file = "django-js-asset-1.2.2.tar.gz", hash = "sha256:c163ae80d2e0b22d8fb598047cd0dcef31f81830e127cfecae278ad574167260"},
+    {file = "django_js_asset-1.2.2-py2.py3-none-any.whl", hash = "sha256:8ec12017f26eec524cab436c64ae73033368a372970af4cf42d9354fcb166bdd"},
 ]
 docutils = [
     {file = "docutils-0.17.1-py2.py3-none-any.whl", hash = "sha256:cf316c8370a737a022b72b56874f6602acf974a37a9fba42ec2876387549fc61"},

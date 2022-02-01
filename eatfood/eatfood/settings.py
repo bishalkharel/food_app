@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "food_recomender",
     "crispy_forms",
+    "ckeditor",
 ]
 
 MIDDLEWARE = [
@@ -59,6 +60,28 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "eatfood.wsgi.application"
+CKEDITOR_CONFIGS = {
+    "default": {
+        "toolbar": "Custom",
+        "toolbar_Custom": [
+            ["Bold", "Italic", "Underline"],
+            [
+                "NumberedList",
+                "BulletedList",
+                "-",
+                "Outdent",
+                "Indent",
+                "-",
+                "JustifyLeft",
+                "JustifyCenter",
+                "JustifyRight",
+                "JustifyBlock",
+            ],
+            ["Link", "Unlink"],
+            ["RemoveFormat", "Source"],
+        ],
+    }
+}
 
 
 # Database

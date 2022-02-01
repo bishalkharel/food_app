@@ -1,5 +1,8 @@
+from resource import RLIMIT_STACK
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+
+from ckeditor.fields import RichTextField
 
 
 class Category(models.Model):
@@ -11,7 +14,7 @@ class Category(models.Model):
 
 class FoodProduct(models.Model):
     food_name = models.CharField(max_length=100)
-    recepie = models.TextField(max_length=300)
+    recipe = RichTextField()
     description = models.CharField(max_length=200)
     price = models.IntegerField()
     image = models.ImageField()
@@ -29,3 +32,16 @@ class Person(AbstractUser):
 
     def __str__(self):
         return self.username
+
+
+class Articel(models.Model):
+    title = models.CharField(max_length=100)
+    content = RichTextField()
+    image = models.ImageField()
+    date = models.DateTimeField(auto_now_add=True)
+    author = models.ForeignKey(
+        Person, on_delete=models.CASCADE, blank=True, null=True, related_name="articles"
+    )
+
+    def __str__(self):
+        return self.title

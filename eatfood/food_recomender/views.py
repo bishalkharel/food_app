@@ -1,10 +1,10 @@
-from xml.etree.ElementInclude import include
 from django.shortcuts import render, redirect
 from .forms import CreatePersonForm
 from .models import Person, Category, FoodProduct
 from django.http import HttpRequest
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
+import random
 
 
 def assign_category(request):
@@ -38,7 +38,17 @@ def show_relatives_items(request):
 
 
 def home(request: HttpRequest):
-    return render(request, "index.html")
+    foods = FoodProduct.objects.all()
+    if request.user.is_authenticated:
+        categories = request.user.categories.all()
+        foods = [category.food.all() for category in categories]
+        foods = [j for i in foods for j in i]
+    random_food = random.choice(foods)
+    return render(
+        request,
+        "index.html",
+        context={"foods_home": foods[:2], "foods": foods, "random_food": random_food},
+    )
 
 
 def loginpage(request):
@@ -94,3 +104,26 @@ def signup_page(request: HttpRequest):
             messages.error(request, "Passwords do not match")
             return redirect("signup")
     return render(request, "registration/signup.html", context={"foods": foods})
+
+
+def recipe_page(request: HttpRequest):
+    foods = FoodProduct.objects.all()
+
+    random_food = random.choice(foods)
+
+    return render(
+        request,
+        "all_recipes.html",
+        context={"foods": foods, "random_food": random_food},
+    )
+
+
+def recipe_detail(request, id):
+    food = FoodProduct.objects.get(id=id)
+    return render(
+        request,
+        "recipe_detail.html",
+        context={
+            "food": food,
+        },
+    )

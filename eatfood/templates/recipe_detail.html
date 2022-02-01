@@ -181,187 +181,25 @@
                 </div>
             </div>
 
-            <div class="layout-tabs">
+
+            <div class="layout-breadcrumbs">
                 <div class="container">
-
-                </div>
-            </div>
-
-            <div class="layout-banner-top">
-                <div class="region region-banner-top">
+                    <div class="region region-breadcrumbs">
+                        <div id="block-breadcrumbs" class="block block-system block-system-breadcrumb-block">
 
 
-                    <div id="block-umami-banner-recipes"
-                        class="block-type-banner-block block block-block-content block-block-content4c7d58a3-a45d-412d-9068-259c57e40541 cover-image"
-                        style="background-image: url(/)">
-                        <div class="block-inner">
-
-
-
-                            <div class="summary">
-
-                                <div
-                                    class="field field--name-field-banner-image field--type-image field--label-hidden field__item">
-                                    <img src={{random_food.image.url}} width="1440" height="617" typeof="foaf:Image"
-                                        class="image-style-scale-crop-7-3-large" />
-
-
-                                </div>
-
-                                <div
-                                    class="field field--name-field-title field--type-string field--label-hidden field__item">
-                                    {{random_food.food_name}}</div>
-
-                                <div
-                                    class="field field--name-field-summary field--type-string-long field--label-hidden field__item">
-                                    {{random_food.description}}</div>
-
-                                <div
-                                    class="field field--name-field-content-link field--type-link field--label-hidden field__item">
-                                    <a href={url 'recpie_detail' random_food.pk %}>view recipe</a></div>
-
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="views-element-container block block-views block-views-blockpromoted-items-block-1"
-                        id="block-views-block-promoted-items-block-1">
-
-
-                        <div>
-                            <div
-                                class="container view-promoted-items--single view view-promoted-items view-id-promoted_items view-display-id-block_1 js-view-dom-id-af2a2c071d43b2e437c63e2822c2e558d56f99ce5a3e6f725ae085b79f5aab2b">
-
-
-
-                                <div class="view-content">
-                                    <div class="views-row">
-
-
-
-                                        <article data-history-node-id="7" role="article"
-                                            about="/articles/give-your-oatmeal-the-ultimate-makeover"
-                                            typeof="schema:Article"
-                                            class="node node--type-article node--promoted view-mode-card node--view-mode-card-common">
-
-
-                                            <h2 class="node__title">
-                                                <span property="schema:name"
-                                                    class="field field--name-title field--type-string field--label-hidden">Give
-                                                    your oatmeal the ultimate makeover</span>
-
-                                            </h2>
-                                            <span property="schema:name"
-                                                content="Give your oatmeal the ultimate makeover"
-                                                class="rdf-meta hidden"></span>
-
-
-                                            <div class="read-more">
-                                                <a class="read-more__link"
-                                                    href="/articles/give-your-oatmeal-the-ultimate-makeover">
-                                                    View Article <span class="visually-hidden"> - <span
-                                                            property="schema:name"
-                                                            class="field field--name-title field--type-string field--label-hidden">Give
-                                                            your oatmeal the ultimate makeover</span>
-                                                    </span>
-                                                </a>
-                                            </div>
-
-                                            <div class="node__content">
-
-                                                <div
-                                                    class="field field--name-field-image field--type-image field--label-hidden field__item">
-                                                    <img property="schema:image"
-                                                        srcset="/sites/default/files/styles/medium_3_2_600x400/public/oatmeal-fruit-syrup-topping.jpg?itok=XIDSjDXA 600w, /sites/default/files/styles/large_3_2_768x512/public/oatmeal-fruit-syrup-topping.jpg?itok=P3dUrQ_4 768w, /sites/default/files/styles/medium_3_2_2x/public/oatmeal-fruit-syrup-topping.jpg?itok=ysMVRrPB 1200w, /sites/default/files/styles/large_3_2_2x/public/oatmeal-fruit-syrup-topping.jpg?itok=V1pJUrDh 1536w"
-                                                        sizes="100vw"
-                                                        src="/sites/default/files/styles/large_3_2_768x512/public/oatmeal-fruit-syrup-topping.jpg?itok=P3dUrQ_4"
-                                                        alt="Oatmeal topped with a vibrant mix of berries, nuts, and seeds"
-                                                        typeof="foaf:Image" />
-
-
-                                                </div>
-
-                                            </div>
-
-                                        </article>
-                                    </div>
-
-                                </div>
-
-                                <div class="attachment attachment-after">
-                                    <div class="views-element-container">
-                                        <div
-                                            class="view-promoted-items--double view view-promoted-items view-id-promoted_items view-display-id-attachment_1 js-view-dom-id-a164ff6ceba31c5ef57d6883503fb7becd991cd5bd390e6d40ada513e14b3a1f">
-
-
-
-                                            <div class="view-content">
-
-
-                                                {% for food in foods_home %}
-                                                <div class="views-row">
-                                                    <article data-history-node-id="16" role="article"
-                                                        about="/recipes/fiery-chili-sauce"
-                                                        class="node node--type-recipe node--promoted view-mode-card node--view-mode-card-common-alt">
-
-
-                                                        <h2 class="node__title">
-                                                            <span
-                                                                class="field field--name-title field--type-string field--label-hidden">{{food.food_name}}</span>
-
-                                                        </h2>
-
-                                                        <div class="read-more">
-                                                            <a class="read-more__link"
-                                                                href={% url 'recipe_detail' food.id %}>
-                                                                View Recipe <span class="visually-hidden"> - <span
-                                                                        class="field field--name-title field--type-string field--label-hidden">{{food.food_name}}</span>
-                                                                </span>
-                                                            </a>
-                                                        </div>
-
-                                                        <div class="node__content">
-
-                                                            <div
-                                                                class="field field--name-field-image field--type-image field--label-hidden field__item">
-                                                                <img width=900 height=900 src={{food.image.url}}
-                                                                    alt="An iridescent array of chilies, onions, and garlic, slowly sweating over a low heat"
-                                                                    typeof="foaf:Image" />
-
-
-                                                            </div>
-
-                                                        </div>
-
-                                                    </article>
-                                                </div>
-                                                {% endfor %}
-
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="layout-page-title">
-                <div class="is-front container">
-                    <div class="region region-page-title">
-                        <div id="block-umami-page-title--2" class="block block-core block-page-title-block">
-
-
-
-                            <h1 class="page-title">home</h1>
-
+                            <nav class="breadcrumb" role="navigation" aria-labelledby="system-breadcrumb">
+                                <h2 id="system-breadcrumb" class="visually-hidden">Breadcrumb</h2>
+                                <ol>
+                                    <li>
+                                        <a href="/">Home</a>
+                                    </li>
+                                    <li>
+                                        <a href="/recipes">Recipes</a>
+                                    </li>
+                                    <li> {{food.food_name}} </li>
+                                </ol>
+                            </nav>
 
                         </div>
 
@@ -369,6 +207,7 @@
 
                 </div>
             </div>
+
 
             <main role="main" class="main container">
 
@@ -378,60 +217,39 @@
                         <div id="block-umami-content" class="block block-system block-system-main-block">
 
 
-                            <div class="views-element-container">
-                                <div
-                                    class="grid--2 view view-frontpage view-id-frontpage view-display-id-page_1 js-view-dom-id-0cda7f569eb8cfeebefcade6669ab336af3969190a52a2fd174d1d3aee5f4aac">
 
 
-                                    <div class="view-header">
-                                        <h2 class="text-align-center">Explore recipes across every type of occasion,
-                                            ingredient, and skill level.</h2>
+                            <article data-history-node-id="8" role="article" about="/recipes/deep-mediterranean-quiche"
+                                class="node node--type-recipe node--promoted node--view-mode-full">
+
+
+                                <header class="node__header">
+                                    <h1 class="page-title">
+                                        <span
+                                            class="field field--name-title field--type-string field--label-hidden">{{food.food_name}}</span>
+
+                                    </h1>
+                                </header>
+
+
+
+                                <div class="node__content">
+
+                                    <div
+                                        class="clearfix text-formatted field field--name-field-summary field--type-text-long field--label-hidden field__item">
+                                        <p>{{food.description}}</p>
                                     </div>
+                                    <div
+                                        class="field field--name-field-image field--type-image field--label-hidden field__item">
+                                        <img sizes="100vw" src={{food.image.url}} typeof="foaf:Image" />
 
-                                    <div class="view-content">
-                                        {% for food in foods  %}
-
-                                        <div class="views-row">
-
-
-                                            <article data-history-node-id="8" role="article"
-                                                about="/recipes/deep-mediterranean-quiche"
-                                                class="node node--type-recipe node--promoted view-mode-card node--view-mode-card">
-
-
-                                                <h2 class="node__title">
-                                                    <span
-                                                        class="field field--name-title field--type-string field--label-hidden">
-                                                        {{food.food_name}}</span>
-
-                                                </h2>
-
-
-                                                <div class="node__content">
-
-                                                    <div
-                                                        class="field field--name-field-image field--type-image field--label-hidden field__item">
-                                                        <img sizes="100vw" src={{food.image.url}}
-                                                            alt="A delicious deep layered Mediterranean quiche with basil garnish."
-                                                            typeof="foaf:Image" />
-                                                    </div>
-
-                                                </div>
-
-                                                <div class="read-more">
-                                                    <a class="read-more__link" href={% url 'recipe_detail' food.id %}>
-                                                        View Recipe <span class="visually-hidden"> -
-                                                            <span
-                                                                class="field field--name-title field--type-string field--label-hidden">{{food.description}}</span>
-                                                        </span>
-                                                    </a>
-                                                </div>
-
-                                            </article>
-                                        </div>
-                                        {% endfor %}
 
                                     </div>
+                                    {{food.recipe | safe}}
+
+                                </div>
+
+                        </div>
 
             </main>
 
