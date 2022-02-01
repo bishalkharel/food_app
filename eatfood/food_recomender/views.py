@@ -69,6 +69,7 @@ def loginpage(request):
                 login(request, user)
                 return redirect("home")
             else:
+                messages.error(request, "Invalid username or password")
                 return redirect("login")
 
     return render(request, "registration/login.html")
@@ -102,7 +103,7 @@ def signup_page(request: HttpRequest):
                     for i in foods:
                         if request.POST.get(str(i.id)):
                             person.categories.add(i)
-                    return redirect("signup")
+                    return redirect("login")
             else:
                 messages.error(request, "Password must be at least 8 characters")
                 return redirect("signup")
